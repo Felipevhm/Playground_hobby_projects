@@ -1,0 +1,74 @@
+*{
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background-color: mediumpurple;
+    overflow: hidden;
+}
+
+.page{
+  margin: auto 0;
+}
+.lebig{
+  margin-top: 50px; 
+  margin-left: 10px;
+width: fit-content;
+height: fit-content;
+
+animation: le 5s infinite alternate;
+}
+
+.square {
+    width: 4rem;
+    height: 4rem;
+    background-color: white;
+    opacity: .6;
+
+    animation: rot 30s backwards alternate infinite 1000ms;
+   
+}
+
+@keyframes rot{
+  100%{rotate: 1440deg;}
+}
+@keyframes le{
+  0%{
+    
+  }
+  100%{
+    transform: 
+    translateX(calc(100vw - 100% - 20px));
+  
+  }
+}
+
+.dely{
+  animation-delay: 1s;
+  margin-top: 100px;
+}
+.dely2{
+  animation-delay: 2s;
+  margin-top: 100px;
+}
+/* .dely3{
+  animation-delay: 3s;
+  margin-top: 100px;
+} */
+
+.rev{
+  animation-direction: alternate-reverse;
+}
+
+.paused:hover{
+  animation-play-state: paused;
+  cursor: pointer;
+  
+}
+
+.paused:hover > div{
+
+  background-color: black; 
+}

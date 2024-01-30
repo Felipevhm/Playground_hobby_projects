@@ -1,0 +1,69 @@
+/* Definindo os keyframes para a animação */
+@keyframes slide-in {
+  from {
+    transform: translateX(10vw);
+  }
+  50% {
+    transform: translateX(100px) translatey(35vh);
+    rotate: 720deg; 
+  }
+
+}
+body{
+  background-color: rgb(207, 154, 148);
+display: flex;
+
+margin-left: 400px;
+margin-top: 150px;;
+}
+/* Aplicando a animação com uma transição */
+.element {
+
+  width: 20px;
+  height: 20px;
+  background-color: rgb(104, 104, 161);
+  animation: slide-in 14s ease-out infinite;
+}
+
+.element img{
+  width: 700%;
+}
+
+.element3{
+
+  width: 20px;
+  height: 200px;
+  background-color: rgb(116, 143, 21);
+  animation: slide-in 14s ease-out infinite
+}
+.element4{
+
+ 
+  width: 20px;
+  height: 200px;
+  background-color: rgb(190, 47, 47);
+  animation: slide-in 3s ease-out infinite;;
+
+}
+
+.element5{
+
+ 
+  width: 50px;
+  height: 70px;
+  background-color: rgb(242, 223, 77);
+  animation: slide-in 13s ease-out backwards infinite;;
+  position: relative;
+}
+.element5 img{
+  width:200%;
+}
+
+/* Quando a classe 'animate' é adicionada ao elemento, a animação ocorre */
+.elementanimate {
+  animation: slide-in 7s ease-out infinite; /* Nome da animação, duração e função de easing dos keyframes */
+}
+
+.rev{
+  animation-fill-mode: backwards;
+}

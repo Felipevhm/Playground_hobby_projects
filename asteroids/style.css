@@ -1,0 +1,142 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  background-color: #1d1135;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+}
+
+.page{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -12;
+
+  /* animation: blink 15s infinite;
+  */
+}
+
+
+
+
+.planet img{
+  width: 100%;
+  animation: fade 25s infinite forwards;
+
+  position: fixed;
+  z-index: 0;
+  left: 0;
+}
+.a02 img{
+  width: 800px;
+  height: 450px;
+
+  animation: a02 6s infinite;
+  position: fixed;
+  z-index: 3;
+
+}
+
+.rotating_div{
+  z-index: 6;
+  left: 0;
+  width: fit-content;
+  height: fit-content;
+  animation: fltr 15s forwards infinite alternate-reverse;
+
+  
+}
+.side_asteroid img{
+  width: 100%;
+  left: 0;
+
+  animation:
+  rot 14s infinite;
+}
+
+.a04{
+  width: fit-content;
+  height: fit-content;
+}
+.a04 img{
+  width: 100%;
+
+  position: fixed;
+  z-index: 10;
+  left: 0;
+
+  animation: particles 22s infinite;
+
+
+}
+
+.dd{
+  animation-delay: 300ms;
+}
+
+@keyframes particles{
+  0%{
+    scale: 0.1;
+   }
+  100%{
+    scale: 20;
+
+  }
+}
+
+@keyframes rot{
+  0%{
+
+   }
+  100%{
+    rotate: 720deg;
+  }
+}
+
+@keyframes fltr{
+  0%{ transform: translateX(calc(-5vw - 100%));
+
+  }
+  100%{
+    transform: translate(100vw,100vh);
+  }
+}
+
+@keyframes fade{
+  0%{
+    transform: translate(-200px,-500px);
+
+  }
+ 100%{
+   transform: scale(0.1) translate(-2000px,50px);
+
+ }
+}
+
+@keyframes a02{
+  0%{left: 0; top: 0;
+  transform: translate(-100%,-100%);}
+  100%{
+    transform: translate(2000px,1000px);
+  }
+}
+
+@keyframes blink {
+	0% {opacity: 0.3}
+	49%{opacity: 0.5}
+	50% {opacity: 1;
+    filter: brightness(110%) sepia(2);
+}
+}
+
+audio{
+  z-index: 200;
+
+}
+
+

@@ -20,4 +20,9 @@ Declaring these on CSS:
   --text-color: #212121;
   --subtle-color: #757575;
 }
+<<<<<<< HEAD
 ```
+=======
+```
+
+>>>>>>> 82e90fddeae6f0b351164cfbf00e9c86b6decf2f

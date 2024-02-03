@@ -2,34 +2,39 @@ function compute(event) {
   event.preventDefault();
   //Numberizing
   
-  let entrada =document.getElementById('entrada').value;
-  let alvo = document.getElementById('alvo-input').value;
-  let nContratos = document.getElementById('nContratos').value;
+  let entrada     = document.getElementById('entrada').value;
+  let alvo        = document.getElementById('alvo-input').value;
+  let nContratos  = document.getElementById('nContratos').value;
   let alavancagem = document.getElementById('alavancagem').value;
-  let stop = document.getElementById('stop-input').value;
-  let parcial = document.getElementById('partial-input').value;
+  let stop        = document.getElementById('stop-input').value;
+  let parcial     = document.getElementById('partial-input').value;
 
-  let meta = document.getElementById('meta-input').value;
+  let meta  = document.getElementById('meta-input').value;
+  let conta = document.getElementById('conta').value;
 
 
-  entrada = numberParse(entrada);
-  alvo = numberParse(alvo);
+  entrada     = numberParse(entrada);
+  alvo        = numberParse(alvo);
   alavancagem = numberParse(alavancagem);
-  nContratos = numberParse(nContratos);
-  stop = numberParse (stop);
-  parcial = Number((parcial).replace(/,/g, '.'))
-  meta = Number((meta).replace(/,/g, '.'))
+  nContratos  = numberParse(nContratos);
+  stop        = numberParse(stop);
+  parcial     = numberParse(parcial);
+  meta        = numberParse(meta);
+  conta       = numberParse(conta);
 
-  let marginGain = String(calculaMargem(entrada,alvo,nContratos));
-  let marginstop = String(calculaMargem(entrada,stop,nContratos));
+  let marginGain    = String(calculaMargem(entrada,alvo,nContratos));
+  let marginstop    = String(calculaMargem(entrada,stop,nContratos));
   let marginPartial = String(calculaMargem(entrada,parcial,nContratos));
 
   let marginInOperation = calculaMargemEmOperacao(nContratos,entrada,alavancagem);
+  let gainPercentage    = calculaMargemPercentual(entrada,alvo,nContratos,meta);
 
-  document.getElementById('margemOperacao').innerText = '$'+marginInOperation;
-  document.getElementById('alvo-output').innerText = `$${marginGain}`;
-  document.getElementById('stop-output').innerText = `$${marginstop}`;
-  document.getElementById('partial-output').innerText = `$${marginPartial}`;
+  document.getElementById('margemOperacao').innerText  = '$'+marginInOperation;
+  document.getElementById('alvo-output').innerText     = `$${marginGain}`;
+  document.getElementById('stop-output').innerText     = `$${marginstop}`;
+  document.getElementById('partial-output').innerText  = `$${marginPartial}`;
+ 
+  document.getElementById('gain-percentage').innerText = `${gainPercentage}%`;
 
 
 
@@ -41,12 +46,15 @@ function compute(event) {
   Entrada - Alvo:${(entrada-alvo).toFixed(5)}
   100k*Entrada - Alvo:${((entrada-alvo)*100000).toFixed(5)}
   abs de 100k*Entrada - Alvo:${Math.abs((entrada-alvo)*100000).toFixed(5)}
+
+  meta: ${meta};
+  conta:${conta};
   `);
 }
 function calculaMargem(entrada,alvo,nContratos){
 
 let output = ((((Math.abs((entrada-alvo))))*(nContratos)*100000)).toFixed(2);
-console.log(`calculaMargem deu ${output}`)
+
   return output;
 }
 
@@ -55,20 +63,19 @@ function calculaMargemEmOperacao(nContratos,entrada,alavancagem){
   return output.replace(/,/g, '.');
 }
 
-function calculaMargemPercentual(entrada,alvo,nContratos){
+function calculaMargemPercentual(entrada,alvo,nContratos,meta){
 
-  let output = ((((Math.abs((entrada-alvo))))*(nContratos)*100000)).toFixed(2);
-  console.log(`calculaMargem deu ${output}`)
+  let output = calculaMargem(entrada,alvo,nContratos)*(conta*meta/100)
+
   return output;
   }
 
-  function numberParse(value){
+function numberParse(value){
     value = Number((value).replace(/,/g, '.'))
     return value;
   }
 
 // EuroQuery:
-
 $(document).ready(function() {
   $.ajax({
       url: 'https://api.frankfurter.app/latest?from=EUR&to=USD',

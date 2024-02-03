@@ -37,13 +37,19 @@
                         
           </tr>
           <tr class="full-width">
-            <td id="special-td">Entrada</td>
-            <td class="labels">
-              <input  id="entrada" type="number" value="1.08150" onchange="compute(event)" step="0.00001" >
+            <td class="labels">Entrada</td>
+            <td>
+              <input  
+              id="entrada" 
+              class="money-visualizer"
+              type="number" 
+              value="1.08150" 
+              onchange="compute(event)" 
+              step="0.00001" >
             </td>          
             <th></th> <th></th> <th></th> <th></th>
           </tr>
-          <tr>
+          <tr class="t3">
             <td class="labels">GAIN MÁX</td>
             <td class="text-percentage">
               <p id="alvo-output" value="$127">$127,00</p> 
@@ -51,20 +57,33 @@
             </td>
 
             <td class="labels">ALVO</td>
-            <td><input id="alvo-input" step="0.00001" onchange="compute(event)" type="number" value="1.08150" ></input></td>
+            <td><input id="alvo-input"
+                       class="money-visualizer"
+                       step="0.00001"
+                       onchange="compute(event)"
+                       type="number"
+                       value="1.08150"
+                       >
+                </input>
+            </td>
             <th></th> <th></th> 
           </tr>
 
           <tr>
           <td  class="labels">STOP MÁX</td>
           <td class="text-percentage">
-            <p id="loss-output" value="$127">$127,00</p> 
-            <p id="loss-percentage">15%</p>
+            <p id="stop-output" value="$127">$127,00</p> 
+            <p id="stop-percentage">15%</p>
           </td>
           
         
-            <td class="labels">ALVO </td>
-            <td>  <input id="stop-input"type="number" onchange="compute(event)" step="0.00001" value="1.08441">
+            <td class="labels">STOP </td>
+            <td>  <input id="stop-input"
+              class="money-visualizer"
+              type="number" 
+              onchange="compute(event)" 
+              step="0.00001" 
+              value="1.08441">
             </input>
           </td>
 
@@ -72,11 +91,16 @@
           <th></th> <th></th>
         </tr>
           <tr>
-              <td id="teste" class="labels">Lucro Parcial | teste de output</td>
+              <td id="teste" class="labels">Lucro Parcial</td>
               <td><p id="partial-output" value="$3,50">$3,50</p></td>
               <td class="labels">Parcial</td>
               <td>
-                <input id="partial-input" type="number" onchange="compute(event)" step="0.00001" value="1.08361" >
+                <input id="partial-input" 
+                class="money-visualizer"
+                type="number" 
+                onchange="compute(event)" 
+                step="0.00001" 
+                value="1.08361" >
                 </input>
               </td>
               <th></th> <th></th> 
@@ -85,14 +109,21 @@
           <tr>
               <td id="bottom-left-td" class="labels">Valor da Conta</td>
               <td>
-                <input type="number" onchange="compute(event)" step="0.01" value="25000.00">
+                <input id="conta" type="number" 
+                onchange="compute(event)" 
+                step="0.01" 
+                value="25000.00">
                 </input>
               </td>
               
-              <td class="labels">Meta da operação</td>
+              <td class="labels">Meta</td>
               <td>
                 <div class="input-wrapper-meta-percentual">
-                  <input id="meta-input" type="number" onchange="compute(event)" step="0.01" value="100.00">
+                  <input id="meta-input"
+                          type="number" 
+                          onchange="compute(event)" 
+                          step="0.01"
+                          value="100.00">
                   </input> 
                   <label for="nome">(em % da banca)</label>
                 </div>

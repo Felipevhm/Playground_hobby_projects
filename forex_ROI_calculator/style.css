@@ -159,35 +159,29 @@ p{
   margin: 0;
 }
 
-#gain-percentage{
-    font-family: 'Rubik', sans-serif;
-    font-size: 30px;
-
-    color: green;
-
-}
-#stop-percentage{
+.percentage{
   font-family: 'Rubik', sans-serif;
   font-size: 30px;
-
-  color: red;
-
 }
 
 .input-wrapper-meta-percentual{
   font-size: 12px;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
-align-items: baseline;
+  align-items: center;
+  gap: 8px;
+
   
 }
 
 .input-wrapper-meta-percentual label{
-margin-top: 5px;
-float:right;
+  margin-top: 5px;
+  width: 100px;
 }
+
+
 
 .money-visualizer{
 

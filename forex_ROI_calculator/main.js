@@ -27,16 +27,19 @@ function compute(event) {
   let marginPartial = String(calculaMargem(entrada,parcial,nContratos));
 
   let marginInOperation = calculaMargemEmOperacao(nContratos,entrada,alavancagem);
-  let gainPercentage    = calculaMargemPercentual(entrada,alvo,nContratos,meta);
+  let gainPercentage    = calculaMargemPercentual(entrada,alvo,nContratos,meta,conta);
+  let stopPercentage    = calculaMargemPercentual(entrada,stop,nContratos,meta,conta);
+  let partialPercentage    = calculaMargemPercentual(entrada,parcial,nContratos,meta,conta);
 
-  document.getElementById('margemOperacao').innerText  = '$'+marginInOperation;
-  document.getElementById('alvo-output').innerText     = `$${marginGain}`;
-  document.getElementById('stop-output').innerText     = `$${marginstop}`;
-  document.getElementById('partial-output').innerText  = `$${marginPartial}`;
+  numberToHtml('margemOperacao','$'+ marginInOperation);
+
+  numberToHtml('alvo-output',isShort(entrada,alvo) +'$'+ marginGain);
+  numberToHtml('stop-output',isShort(alvo,stop) + '$'+ marginstop);
+  numberToHtml('partial-output','$'+ marginPartial);
  
-  document.getElementById('gain-percentage').innerText = `${gainPercentage}%`;
-
-
+  numberToHtml('alvo-percentage',isShort(entrada,alvo) + gainPercentage + '%');
+  numberToHtml('stop-percentage',isShort(alvo,stop) + stopPercentage + '%');
+  numberToHtml('partial-percentage',partialPercentage + '%');
 
   console.log( `
   entrada: ${entrada} \n
@@ -53,26 +56,36 @@ function compute(event) {
 }
 function calculaMargem(entrada,alvo,nContratos){
 
-let output = ((((Math.abs((entrada-alvo))))*(nContratos)*100000)).toFixed(2);
+let output = ((((Math.abs((alvo - entrada))))*(nContratos)*100000)).toFixed(2);
 
   return output;
 }
+function calculaMargemPercentual(entrada,alvo,nContratos,meta,conta){
+
+  let output = calculaMargem(entrada,alvo,nContratos)/((meta/100)*conta);
+  output = output.toFixed(2);
+  output = String(output).replace(/,/g, '.')
+
+  return output;
+  }
 
 function calculaMargemEmOperacao(nContratos,entrada,alavancagem){
   let output = (nContratos*entrada*100000/alavancagem).toFixed(2);
   return output.replace(/,/g, '.');
 }
-
-function calculaMargemPercentual(entrada,alvo,nContratos,meta){
-
-  let output = calculaMargem(entrada,alvo,nContratos)*(conta*meta/100)
-
-  return output;
-  }
-
 function numberParse(value){
     value = Number((value).replace(/,/g, '.'))
     return value;
+  }
+
+  function numberToHtml(id,value){
+   return document.getElementById(id).innerText  = `${value}`;
+  }
+
+  function isShort(entrada,alvo){
+    if (entrada<=alvo){
+      return ""}
+      else return "-";
   }
 
 // EuroQuery:

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+   <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações de Alavancagem</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>💲 ForexCalc</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,17 +25,12 @@
    
 
     <table>
-        <!-- <tr>
-            <th></th><th></th><th></th>
-            <th>EUR/USD</th>
-            <th></th><th></th><th></th>
-        </tr> -->
         <main>
           <tr>
               <td class="labels">N° DE CONTRATOS</td>
-              <td><input id="nContratos" onchange="compute(event)" type="text" value="1" ></input> </td>
+              <td><input id="nContratos" onchange="compute(event)" type="number" value="1" ></input> </td>
               <td class="labels">Alavancagem</td>
-              <td><input id="alavancagem" onchange="compute(event)" value="100" ></input> </td>
+              <td><input id="alavancagem" type="number" onchange="compute(event)" value="100" ></input> </td>
               <td class="labels">Margem em Operação</td>
               <td><p id="margemOperacao" value="$127">$127,00</p></td>
 
@@ -43,40 +39,71 @@
           <tr class="full-width">
             <td id="special-td">Entrada</td>
             <td class="labels">
-              <input  id="entrada" type="number" value="1.08149" onchange="compute(event)" step="0.00001" >
+              <input  id="entrada" type="number" value="1.08150" onchange="compute(event)" step="0.00001" >
             </td>          
             <th></th> <th></th> <th></th> <th></th>
           </tr>
           <tr>
             <td class="labels">GAIN MÁX</td>
-            <td><p id="gain-max" value="$127">$127,00</p></td>
+            <td class="text-percentage">
+              <p id="alvo-output" value="$127">$127,00</p> 
+              <p id="gain-percentage">95%</p>
+            </td>
+
             <td class="labels">ALVO</td>
-            <td><input id="alvo" onchange="compute(event)" type="number" value="0"></input></td>
+            <td><input id="alvo-input" step="0.00001" onchange="compute(event)" type="number" value="1.08150" ></input></td>
             <th></th> <th></th> 
           </tr>
+
           <tr>
-          <td class="labels">LOSS MÁX</td>
-          <td><p value="$40,00">$40,00</p></td>
-          <td class="labels">STOP</td>
-          <td><input type="text" value="1,08441" ></input></td>
+          <td  class="labels">STOP MÁX</td>
+          <td class="text-percentage">
+            <p id="loss-output" value="$127">$127,00</p> 
+            <p id="loss-percentage">15%</p>
+          </td>
+          
+        
+            <td class="labels">ALVO </td>
+            <td>  <input id="stop-input"type="number" onchange="compute(event)" step="0.00001" value="1.08441">
+            </input>
+          </td>
+
 
           <th></th> <th></th>
         </tr>
           <tr>
-              <td class="labels">Lucro Parcial</td>
-              <td><p value="$3,50">$3,50</p></td>
+              <td id="teste" class="labels">Lucro Parcial | teste de output</td>
+              <td><p id="partial-output" value="$3,50">$3,50</p></td>
               <td class="labels">Parcial</td>
-              <td><input type="text" value="1,08361" ></input></td>
+              <td>
+                <input id="partial-input" type="number" onchange="compute(event)" step="0.00001" value="1.08361" >
+                </input>
+              </td>
               <th></th> <th></th> 
           </tr>
 
           <tr>
-              <td id="bottom-left-td" class="labels">Valor da Conta.</td>
-              <td><input type="text" value="$25.000"></input></td>
-              <th></th> <th></th> <th></th><th id="last-th"></th>
+              <td id="bottom-left-td" class="labels">Valor da Conta</td>
+              <td>
+                <input type="number" onchange="compute(event)" step="0.01" value="25000.00">
+                </input>
+              </td>
+              
+              <td class="labels">Meta da operação</td>
+              <td>
+                <div class="input-wrapper-meta-percentual">
+                  <input id="meta-input" type="number" onchange="compute(event)" step="0.01" value="100.00">
+                  </input> 
+                  <label for="nome">(em % da banca)</label>
+                </div>
+              </td>
+             <th></th><th id="last-th"></th>
                
-          </tr>
-          <tr>
+      
+    </table>
+    <!-- <footer>
+     
+    </footer> -->
 
             <script src="./main.js"></script>
         </main>

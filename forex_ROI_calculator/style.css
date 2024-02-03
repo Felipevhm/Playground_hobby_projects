@@ -21,6 +21,7 @@
     /* font-family: 'Roboto Mono', monospace;
     font-family: 'Montserrat', sans-serif; */
     font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
     
 }
 /* :root{
@@ -31,8 +32,8 @@ body{
   width: 100%;
 
   margin: 0;
-  padding-inline: 40px;
-
+  padding: 20px 40px;
+  
   background: var(--primary-color);
 
   display: flex;
@@ -59,7 +60,9 @@ h1{
   font-family: 'Montserrat', sans-serif; 
   color: var(--secondary-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
+
+  margin-top: 10px;
+}
 
 nav{
   background-color: var(--simple-gray);
@@ -99,6 +102,10 @@ th, td {
   text-align: left;
 }
 
+#tr3,#tr4{
+  height: 400pxpx;
+}
+
 th {
   background-color: var(--lighter-gray);
 }
@@ -132,4 +139,29 @@ p{
 #last-th {
   border-bottom-right-radius: var(--border-radius-value);
   border: none;
+}
+
+.text-percentage{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#gain-percentage{
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+
+    color: green;
+
+}
+#loss-percentage{
+  font-family: 'Rubik', sans-serif;
+  font-size: 30px;
+
+  color: red;
+
+}
+
+.input-wrapper-meta-percentual label{
+  font-size: 14px;
 }

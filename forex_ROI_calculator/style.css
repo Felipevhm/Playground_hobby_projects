@@ -196,3 +196,17 @@ p{
   border-radius: 5px;
   border: 1px solid var(--subtle-color);
 }
+
+#toggleButton {
+
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 18px;
+  background-color: rgb(79, 121, 79);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  
+  width: 100%;
+  border-radius: 5px;
+}

@@ -1,3 +1,5 @@
+let isShort = 0;
+
 function compute(event) {
   event.preventDefault();
   //Numberizing
@@ -33,13 +35,13 @@ function compute(event) {
 
   numberToHtml('margemOperacao','$'+ marginInOperation);
 
-  numberToHtml('alvo-output',isShort(entrada,alvo) +'$'+ marginGain);
-  numberToHtml('stop-output',isShort(alvo,stop) + '$'+ marginstop);
-  numberToHtml('partial-output','$'+ marginPartial);
+  numberToHtml('alvo-output',negativeSign(entrada,alvo,isShort) +'$'+ marginGain);
+  numberToHtml('stop-output',negativeSign(entrada,stop,isShort) + '$'+ marginstop);
+  numberToHtml('partial-output',negativeSign(entrada,parcial,isShort) +'$'+ marginPartial);
  
-  numberToHtml('alvo-percentage',isShort(entrada,alvo) + gainPercentage + '%');
-  numberToHtml('stop-percentage',isShort(alvo,stop) + stopPercentage + '%');
-  numberToHtml('partial-percentage',partialPercentage + '%');
+  numberToHtml('alvo-percentage',negativeSign(entrada,alvo,isShort) + gainPercentage + '%');
+  numberToHtml('stop-percentage',negativeSign(entrada,stop,isShort) + stopPercentage + '%');
+  numberToHtml('partial-percentage',negativeSign(entrada,parcial,isShort) + partialPercentage + '%');
 
   console.log( `
   entrada: ${entrada} \n
@@ -82,11 +84,31 @@ function numberParse(value){
    return document.getElementById(id).innerText  = `${value}`;
   }
 
-  function isShort(entrada,alvo){
-    if (entrada<=alvo){
-      return ""}
-      else return "-";
+  function negativeSign(entrada,alvo,isShort){
+    if (((entrada>alvo)&&!isShort)||(isShort&&(alvo>entrada))){
+      return "-"}
+      else return "";
   }
+
+
+
+
+  function toggleButtonText(event) {
+      const button = document.getElementById('toggleButton');
+
+      if (isShort === 0) {
+          button.innerHTML = 'Short';
+          button.style.backgroundColor = '#d95353';
+          isShort = 1;
+          compute(event);
+      } else {
+          button.innerHTML = 'Long';
+          button.style.backgroundColor = '#508c50'; // green
+          isShort = 0;
+          compute(event);
+      }
+  }
+
 
 // EuroQuery:
 $(document).ready(function() {

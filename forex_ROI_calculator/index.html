@@ -59,7 +59,9 @@
               onchange="compute(event)" 
               step="0.00001" >
             </td>          
-            <th></th> <th></th> <th></th> <th></th>
+            <td><button id="toggleButton" onclick="toggleButtonText(event)">Long</button></td>
+            
+            <th></th> <th></th> <th></th>
           </tr>
           <tr class="t3">
             <td class="labels">GAIN MÁX</td>
@@ -85,7 +87,7 @@
           <td  class="labels">STOP MÁX</td>
           <td class="text-percentage">
             <p id="stop-output" value="$127">$1000.00</p> 
-            <p id="stop-percentage" class="percentage" style="color: red;">10.00%</p>
+            <p id="stop-percentage" class="percentage" style="color: red;">-10.00%</p>
           </td>
           
         

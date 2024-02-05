@@ -43,8 +43,7 @@
                 onchange="compute(event)" 
                 value="100" >
               </input> </td>
-              <td class="labels">Margem em Operação</td>
-              <td><p id="margemOperacao" value="$127">$1088.30</p></td>
+       
 
                         
           </tr>
@@ -60,8 +59,13 @@
               step="0.00001" >
             </td>          
             <td><button id="toggleButton" onclick="toggleButtonText(event)">Long</button></td>
-            
-            <th></th> <th></th> <th></th>
+            <td class="labels">
+              <span> Margem em Operação</span>
+              <p id="margemOperacao" value="$127">$1088.30</p>
+            </td>
+            <!-- <td><p id="margemOperacao" value="$127">$1088.30</p></td> -->
+
+           <!-- <th></th>  -->
           </tr>
           <tr class="t3">
             <td class="labels">GAIN MÁX</td>
@@ -80,7 +84,7 @@
                        >
                 </input>
             </td>
-            <th></th> <th></th> 
+         
           </tr>
 
           <tr>
@@ -102,7 +106,7 @@
           </td>
 
 
-          <th></th> <th></th>
+      
         </tr>
           <tr>
               <td id="teste" class="labels">Lucro Parcial</td>
@@ -123,7 +127,7 @@
                 value="1.09330" >
                 </input>
               </td>
-              <th></th> <th></th> 
+             
           </tr>
 
           <tr>
@@ -137,9 +141,10 @@
               </td>
               
               <td class="labels">Meta</td>
-              <td>
+              <td id="last-th">
                 <div class="input-wrapper-meta-percentual">
                   <input id="meta-input"
+                           
                           class="money-visualizer"
                           type="number" 
                           onchange="compute(event)" 
@@ -149,7 +154,7 @@
                   <label for="meta-input" style="color:#757575"> <i>% da banca</i></label>
                 </div>
               </td>
-             <th></th><th id="last-th"></th>
+             <!-- <th id="last-th"></th> -->
                
       
     </table>
